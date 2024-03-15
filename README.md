@@ -1,6 +1,4 @@
-# MediaBot
-
-[![MediaBot](https://img.shields.io/badge/dev-developing-yellow)](https://github.com/yourmediabotrepo)
+# MediaBot [![MediaBot](https://img.shields.io/badge/dev-developing-yellow)](https://github.com/yourmediabotrepo)
 
 ## About
 
