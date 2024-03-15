@@ -2,4 +2,6 @@
 venv/
 __pycache__/
 
-/media/*
+/media_bot/youtube/media/*
+
+.vscode/
