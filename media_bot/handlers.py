@@ -2,7 +2,10 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CallbackContext
 
 async def welcome_message(update: Update, context: CallbackContext) -> None:
-    keyboard = [[InlineKeyboardButton("Download YouTube", callback_data='choose_download_option')]]
+    keyboard = [
+        [InlineKeyboardButton(" ▶️ Download YouTube", callback_data='choose_download_option')],
+        [InlineKeyboardButton("📁 File Converter", callback_data='file_converter')]
+    ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     
     
