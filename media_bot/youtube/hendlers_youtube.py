@@ -18,16 +18,15 @@ async def handle_download_option(update: Update, context: CallbackContext) -> No
 
 async def handle_link(update: Update, context: CallbackContext) -> None:
     link = update.message.text
-    download_option = context.user_data.get('download_option')
-    if download_option:
+    if context.user_data.get('download_option') == 'download_video' or context.user_data.get('download_option') == 'download_audio':
         downloader = YoutubeDownloader()
-        if download_option == 'download_video':
+        if context.user_data['download_option'] == 'download_video':
             file_path = downloader.download_video(link)
             if file_path.startswith("An error occurred"):
                 await context.bot.send_message(chat_id=update.effective_chat.id, text=file_path)
             else:
                 await context.bot.send_video(chat_id=update.effective_chat.id, video=open(file_path, 'rb'))
-        elif download_option == 'download_audio':
+        elif context.user_data['download_option'] == 'download_audio':
             file_path = downloader.download_audio(link)
             if file_path.startswith("An error occurred"):
                 await context.bot.send_message(chat_id=update.effective_chat.id, text=file_path)
@@ -35,3 +34,4 @@ async def handle_link(update: Update, context: CallbackContext) -> None:
                 await context.bot.send_audio(chat_id=update.effective_chat.id, audio=open(file_path, 'rb'))
     else:
         await context.bot.send_message(chat_id=update.effective_chat.id, text='Please choose the download option first.')
+
